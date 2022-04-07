@@ -24,8 +24,8 @@ spec:
   # Use service account that can deploy to all namespaces
   # serviceAccountName: cd-jenkins
   containers:
-  - name: gradle-bld
-    image: openjdk:latest
+  - name: golang
+    image: golang:1.17.5
     command:
     - cat
     tty: true
@@ -45,7 +45,7 @@ spec:
   stages {
     stage('codebuild') {
       steps {
-        container('gradle-bld') {
+        container('golang') {
           sh """
              ls -a && pwd 
           """
